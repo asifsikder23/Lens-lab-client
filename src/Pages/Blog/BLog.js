@@ -1,8 +1,8 @@
 import React from "react";
-import blogImg1 from "../../Assests/1.jpg";
-import blogImg2 from "../../Assests/2.png";
-import blogImg3 from "../../Assests/3.jpg";
-import blogImg4 from "../../Assests/4.jpeg";
+import blogImg1 from "../../Assets/1.jpg";
+import blogImg2 from "../../Assets/2.png";
+import blogImg3 from "../../Assets/3.jpg";
+import blogImg4 from "../../Assets/4.jpeg";
 
 const BLog = () => {
   return (
@@ -39,9 +39,9 @@ const BLog = () => {
               10th Oct 2022
             </time>
 
-            <a href="#">
+            
               <h3 className="mt-0.5 text-lg text-gray-900">Local State</h3>
-            </a>
+           
 
             <p className="mt-2 text-sm leading-relaxed text-gray-500 line-clamp-3">
               Local state is data we manage in one or another component. Local
@@ -59,9 +59,9 @@ const BLog = () => {
               10th Oct 2022
             </time>
 
-            <a href="#">
+            
               <h3 className="mt-0.5 text-lg text-gray-900">Global State</h3>
-            </a>
+           
 
             <p className="mt-2 text-sm leading-relaxed text-gray-500 line-clamp-3">
               Global state is data we manage across multiple components. Global
@@ -80,9 +80,9 @@ const BLog = () => {
               10th Oct 2022
             </time>
 
-            <a href="#">
+          
               <h3 className="mt-0.5 text-lg text-gray-900">Server State</h3>
-            </a>
+          
 
             <p className="mt-2 text-sm leading-relaxed text-gray-500 line-clamp-3">
               Data that comes from an external server that must be integrated
@@ -101,9 +101,9 @@ const BLog = () => {
               10th Oct 2022
             </time>
 
-            <a href="#">
+            
               <h3 className="mt-0.5 text-lg text-gray-900">URL State</h3>
-            </a>
+        
 
             <p className="mt-2 text-sm leading-relaxed text-gray-500 line-clamp-3">
               Data that exists on our URLs, including the pathname and query
@@ -121,7 +121,7 @@ const BLog = () => {
 
       <div className=" m-10">
         <div className="hero-content flex-col lg:flex-row gap-10">
-          <img src={blogImg2} className="max-w-sm rounded-lg shadow-2xl" />
+          <img src={blogImg2} className="max-w-sm rounded-lg shadow-2xl" alt=""/>
           <div>
             <h1 className="text-5xl font-bold">
               How does prototypical inheritance work?
@@ -141,7 +141,7 @@ const BLog = () => {
       </div>
       <div className=" m-10">
         <div className="hero-content flex-col lg:flex-row gap-10">
-          <img src={blogImg3} className="max-w-sm rounded-lg shadow-2xl" />
+          <img src={blogImg3} className="max-w-sm rounded-lg shadow-2xl" alt=""/>
           <div>
             <h1 className="text-5xl font-bold">What is Unit Testing?</h1>
             <p className="py-6">
@@ -172,7 +172,7 @@ const BLog = () => {
 
         <div className=" m-10">
           <div className="hero-content flex-col lg:flex-row gap-10">
-            <img src={blogImg4} className="max-w-sm rounded-lg shadow-2xl" />
+            <img src={blogImg4} className="max-w-sm rounded-lg shadow-2xl" alt=""/>
             <div>
               <h1 className="text-5xl font-bold">React VS Angular VS Vue</h1>
               <p className="py-6">
