@@ -1,12 +1,73 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../Assets/logo with text white.png";
 import logo2 from "../../Assets/logo with text.png";
+import { AuthContext } from "../../Context/UserContext";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const navigate = useNavigate()
+  const location = useLocation()
+  const from = location.state?.from?.pathname || "/";
+  const {googleSignIn, login} = useContext(AuthContext)
+  const [userEmail, setUserEmail] = useState("");
+
+  const handleGoogleLogIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error("error: ", error);
+      });
+  };
+  const handleLogIn = event =>{
+    event.preventDefault()
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+
+    login(email, password)
+    .then(result =>{
+      const user = result.user;
+      navigate(from,{replace:true})
+      console.log(user);
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Log in Success',
+        showConfirmButton: false,
+        timer: 1500
+        
+      })
+      .then(res => res.json())
+      .then(data => {
+       console.log(data);
+      })
+      .catch(err => console.log(err))
+    })
+    .catch(err =>{
+      console.error(err);
+      Swal.fire({
+        title: 'Are you Sick ???',
+        text: 'Wrong Email or Password.',
+        imageUrl: 'https://images.squarespace-cdn.com/content/v1/57b35bff46c3c465f6192fcc/1500384081174-1RVJTEAJNRH3T4EOG9KD/image-asset.gif',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Custom image',
+      })
+    })
+}
+const handleResetPass = () => {
+ if (!userEmail) {
+   Swal.fire("Please Enter Your Email");
+   return;
+ }
+};
   return (
     <div>
-      
       <section className="dark:bg-zinc-900">
         <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
         <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
@@ -69,7 +130,7 @@ const Login = () => {
                   </p>
                   <div className="my-6 space-y-4">
                     <button
-                      // onClick={handleGoogleLogIn}
+                      onClick={handleGoogleLogIn}
                       aria-label="Login with Google"
                       type="button"
                       className="btn w-full gap-3"
@@ -90,7 +151,7 @@ const Login = () => {
                     <hr className="w-full dark:text-gray-400" />
                   </div>
                   <form
-                    // onSubmit={handleSignUp}
+                    onSubmit={handleLogIn}
                     action=""
                     className="space-y-8 ng-untouched ng-pristine ng-valid"
                   >
@@ -118,6 +179,7 @@ const Login = () => {
                           className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-stone-900 dark:text-gray-100 focus:dark:border-violet-400"
                         />
                         <Link
+                        onClick={handleResetPass}
                             className="text-xs hover:underline dark:text-gray-400"
                           >
                             Forgot password?

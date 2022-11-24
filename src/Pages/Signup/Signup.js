@@ -1,9 +1,65 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { updateProfile } from "firebase/auth";
+import React, { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../Assets/logo with text white.png";
 import logo2 from "../../Assets/logo with text.png";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../Context/UserContext";
 
 const Signup = () => {
+  const { googleSignIn, auth, createUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  const handleGoogleLogIn = () => {
+    googleSignIn()
+      .then((result) => {
+        const user = result.user;
+
+        navigate(from, { replace: true });
+      })
+      .catch((error) => {
+        console.error("error: ", error);
+      });
+  };
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const type = form.userType.value;
+    const password = form.password.value;
+
+    createUser(email, password, type)
+      .then((result) => {
+        const user = result.user;
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "SignUp Successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        updateUser(name, photo);
+        console.log(user);
+      })
+      .catch((err) => console.error(err));
+  };
+  const updateUser = (name, photo) => {
+    updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    })
+      .then(() => {
+        console.log("display name updated");
+        // navigate(from,{replace:true})
+      })
+      .catch((error) => {
+        console.error("error", error);
+      });
+  };
   return (
     <div>
       <section className="dark:bg-zinc-900">
@@ -66,7 +122,7 @@ const Signup = () => {
                   </p>
                   <div className="my-6 space-y-4">
                     <button
-                      // onClick={handleGoogleLogIn}
+                      onClick={handleGoogleLogIn}
                       aria-label="Login with Google"
                       type="button"
                       className="btn w-full gap-3"
@@ -87,7 +143,7 @@ const Signup = () => {
                     <hr className="w-full dark:text-gray-400" />
                   </div>
                   <form
-                    // onSubmit={handleSignUp}
+                    onSubmit={handleSignUp}
                     action=""
                     className="space-y-8 ng-untouched ng-pristine ng-valid"
                   >
@@ -104,8 +160,10 @@ const Signup = () => {
                       </div>
                       <div className="space-y-2 ">
                         <label className="block text-sm">User Type</label>
-                        <select className="select select-bordered w-full max-w-xs px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-stone-900 dark:text-gray-100 focus:dark:border-violet-200 bg-zinc-900">
-                          <option>User</option>
+                        <select
+                        name="userType"
+                        className="select select-bordered w-full max-w-xs px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-stone-900 dark:text-gray-100 focus:dark:border-violet-200 bg-zinc-900">
+                          <option>Buyer</option>
                           <option>Seller</option>
                         </select>
                       </div>
