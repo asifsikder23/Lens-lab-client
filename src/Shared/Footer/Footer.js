@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -27,7 +28,7 @@ const Footer = () => {
                   href="/"
                   className="block text-2xl font-medium text-gray-900 hover:opacity-75 sm:text-3xl"
                 >
-                  0123456789
+                  +8801872400423
                 </a>
               </p>
 
@@ -134,49 +135,39 @@ const Footer = () => {
                 <nav aria-label="Footer Navigation - Services" className="mt-6">
                   <ul className="space-y-4 text-sm">
                     <li>
-                      <a
-                        href="/"
+                      <Link
                         className="text-gray-700 transition hover:opacity-75"
                       >
-                        1on1 Coaching
-                      </a>
+                        Best Prices
+                      </Link>
                     </li>
 
                     <li>
-                      <a
-                        href="/"
+                      <Link
                         className="text-gray-700 transition hover:opacity-75"
                       >
-                        Company Review
-                      </a>
+                        Trusted Seller
+                      </Link>
                     </li>
 
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        
                         className="text-gray-700 transition hover:opacity-75"
                       >
                         Accounts Review
-                      </a>
+                      </Link>
                     </li>
 
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        
                         className="text-gray-700 transition hover:opacity-75"
                       >
-                        HR Consulting
-                      </a>
+                        Safely Buying
+                      </Link>
                     </li>
 
-                    <li>
-                      <a
-                        href="/"
-                        className="text-gray-700 transition hover:opacity-75"
-                      >
-                        SEO Optimisation
-                      </a>
-                    </li>
                   </ul>
                 </nav>
               </div>
@@ -187,30 +178,30 @@ const Footer = () => {
                 <nav aria-label="Footer Navigation - Company" className="mt-6">
                   <ul className="space-y-4 text-sm">
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        to={'/about'}
                         className="text-gray-700 transition hover:opacity-75"
                       >
                         About
-                      </a>
+                      </Link>
                     </li>
 
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                      to={"/contact"}
                         className="text-gray-700 transition hover:opacity-75"
                       >
                         Meet the Team
-                      </a>
+                      </Link>
                     </li>
 
                     <li>
-                      <a
-                        href="/"
+                      <Link
+                        to={"/"}
                         className="text-gray-700 transition hover:opacity-75"
                       >
                         Accounts Review
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </nav>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import logo from "../../Assests/logo with text white.png";
-import logo2 from "../../Assests/logo with text.png";
+import logo from "../../Assets/logo with text white.png";
+import logo2 from "../../Assets/logo with text.png";
 
 const Login = () => {
   return (
@@ -14,13 +14,9 @@ const Login = () => {
           >
             <div className="max-w-xl lg:max-w-3xl">
               <div className="relative -mt-16 block lg:hidden">
-                <a
-                  className="inline-flex h-16 w-16 items-center justify-center rounded-full bg-black text-blue-600 sm:h-20 sm:w-20"
-                  href=""
-                >
-                  <span className="sr-only">Home</span>
+                
                   <img className="h-8 sm:h-10" src={logo2} alt="" />
-                </a>
+               
 
                 <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
                   Welcome to Lens Lab
@@ -97,13 +93,11 @@ const Login = () => {
                           placeholder="*****"
                           className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-stone-900 dark:text-gray-100 focus:dark:border-violet-400"
                         />
-                        <a
-                            rel="noopener noreferrer"
-                            href="#"
+                        <Link
                             className="text-xs hover:underline dark:text-gray-400"
                           >
                             Forgot password?
-                          </a>
+                          </Link>
                       </div>
                     </div>
                     <button type="submit" className="w-full btn">
