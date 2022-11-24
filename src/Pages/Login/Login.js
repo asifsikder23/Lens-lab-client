@@ -6,19 +6,43 @@ import logo2 from "../../Assets/logo with text.png";
 const Login = () => {
   return (
     <div>
+      
       <section className="dark:bg-zinc-900">
         <div className="lg:grid lg:min-h-screen lg:grid-cols-12">
+        <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
+            <img
+              alt="Night"
+              src="https://c1.wallpaperflare.com/preview/72/794/456/camera-portrait-mystery-urban.jpg"
+              className="absolute inset-0 h-full w-full object-cover opacity-80"
+            />
+
+            <div className="hidden lg:relative lg:block lg:p-12">
+              <div className="flex justify-end">
+              <img className="h-8 sm:h-10" src={logo} alt="" />
+              </div>
+
+              <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl text-right">
+                Welcome to Lens Lab
+              </h2>
+
+              <p className="mt-4 leading-relaxed text-white/90 text-right">
+                Selling your photo gear to KEH Camera is easy! Get an instant
+                quote on our website, ship it in for free and get top-dollar for
+                your camera equipment.
+              </p>
+            </div>
+          </section>
           <main
             aria-label="Main"
             className="flex items-center justify-center px-8 py-8 sm:px-12 lg:col-span-7 lg:py-12 lg:px-16 xl:col-span-6"
           >
             <div className="max-w-xl lg:max-w-3xl">
-              <div className="relative -mt-16 block lg:hidden">
+              <div className="relative -mt-14 block lg:hidden">
                 
                   <img className="h-8 sm:h-10" src={logo2} alt="" />
                
 
-                <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+                <h1 className="mt-2 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
                   Welcome to Lens Lab
                 </h1>
 
@@ -108,29 +132,6 @@ const Login = () => {
               </section>
             </div>
           </main>
-          <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
-            <img
-              alt="Night"
-              src="https://c1.wallpaperflare.com/preview/72/794/456/camera-portrait-mystery-urban.jpg"
-              className="absolute inset-0 h-full w-full object-cover opacity-80"
-            />
-
-            <div className="hidden lg:relative lg:block lg:p-12">
-              <div className="flex justify-end">
-              <img className="h-8 sm:h-10 " src={logo} alt="" />
-              </div>
-
-              <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl text-right">
-                Welcome to Lens Lab
-              </h2>
-
-              <p className="mt-4 leading-relaxed text-white/90 text-right">
-                Selling your photo gear to KEH Camera is easy! Get an instant
-                quote on our website, ship it in for free and get top-dollar for
-                your camera equipment.
-              </p>
-            </div>
-          </section>
         </div>
       </section>
     </div>

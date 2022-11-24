@@ -1,0 +1,21 @@
+[
+    {
+      "categoriesName": "Digital Cameras",
+      "categoriesId": 101,
+      "images": "https://static-01.daraz.com.bd/p/586addb5d25219ce5d92c13d3a7af05d.jpg",
+      "bgColor": "#EFF6FF"
+      
+    },
+    {
+      "categoriesName": "Camera Lenses & Filters",
+      "categoriesId": 102,
+      "images": "https://pictures-kenya.jijistatic.com/1873611_u-sig-1750f28dcos-14420453_1000x1000.jpg",
+      "bgColor": "#FEF2F2"
+    },
+    {
+      "categoriesName": "Video Cameras & Camcorders",
+      "categoriesId": 103,
+      "images": "https://justcreative.com/wp-content/uploads/2021/12/1-Panasonic-X2000.jpg",
+      "bgColor": "#F0FDF4"
+    }
+  ]

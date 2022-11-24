@@ -39,7 +39,7 @@ const Signup = () => {
                 
                   <img className="h-8 sm:h-10" src={logo2} alt="" />
               
-                <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+                <h1 className="mt-2 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
                   Welcome to Lens Lab
                 </h1>
 
