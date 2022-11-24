@@ -19,6 +19,9 @@ const Navbar = () => {
       <li className="relative font-medium text-white before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition hover:before:scale-100">
         <Link to={"/contact"}>Contact Us</Link>
       </li>
+      <li className="relative font-medium text-white before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition hover:before:scale-100">
+        <Link to={"/blog"}>Blog</Link>
+      </li>
       <li>
         <div className="sm:flex sm:gap-4">
           {/* {user?.uid ? (
@@ -33,7 +36,7 @@ const Navbar = () => {
               to={"/login"}
               className="rounded-md bg-stone-700 px-5 py-2.5 text-sm font-medium text-white shadow"
             >
-              Login / SignUp
+              LogIn / SignUp
             </Link>
           {/* )} */}
         </div>
@@ -52,7 +55,7 @@ const Navbar = () => {
                   <div>
                     <img className="w-12" src={logo} alt="" />
                   </div>
-                  <div className=" text-white">Lab Lens</div>
+                  <div className=" text-white">Lens Lab</div>
                 </div>
               </Link>
             </div>
