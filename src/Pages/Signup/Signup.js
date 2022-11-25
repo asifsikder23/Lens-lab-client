@@ -1,16 +1,18 @@
 import { updateProfile } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from "../../Assets/logo with text white.png";
 import logo2 from "../../Assets/logo with text.png";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/UserContext";
 
+
 const Signup = () => {
   const { googleSignIn, auth, createUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
+
 
   const handleGoogleLogIn = () => {
     googleSignIn()
@@ -54,7 +56,7 @@ const Signup = () => {
     })
       .then(() => {
         console.log("display name updated");
-        // navigate(from,{replace:true})
+        navigate(from,{replace:true})
       })
       .catch((error) => {
         console.error("error", error);

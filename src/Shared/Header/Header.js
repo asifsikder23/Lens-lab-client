@@ -13,10 +13,7 @@ const Navbar = () => {
       <li className="relative font-medium text-white before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition hover:before:scale-100">
         <Link to={"/about"}>About</Link>
       </li>
-      <li className="relative font-medium text-white before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition hover:before:scale-100">
-        <Link to={"/appointment"}>Products</Link>
-      </li>
-
+      
       <li className="relative font-medium text-white before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition hover:before:scale-100">
         <Link to={"/contact"}>Contact Us</Link>
       </li>

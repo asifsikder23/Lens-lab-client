@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const CategoriesCard = ({ category }) => {
-  const { categoriesName, images } = category;
+  const { categoriesName, images, categoriesId } = category;
   return (
     <div className=''>
       <a href="#" className="group block overflow-hidden">
@@ -16,11 +17,13 @@ const CategoriesCard = ({ category }) => {
           </h3>
         </div>
       </a>
+      <Link to={`/categories/${categoriesId}`}>
       <button
       className="btn w-full"
       >
         See Details
       </button>
+      </Link>
     </div>
   );
 };

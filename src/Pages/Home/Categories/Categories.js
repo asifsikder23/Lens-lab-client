@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CategoriesCard from './CategoriesCard';
-import { CirclesWithBar, ThreeDots } from "react-loader-spinner";
+import {  ThreeDots } from "react-loader-spinner";
 
 const Categories = () => {
     const [info, setInfo] = useState([]);
