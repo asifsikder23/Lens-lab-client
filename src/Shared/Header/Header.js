@@ -23,30 +23,23 @@ const Navbar = () => {
       <li className="relative font-medium text-white before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition hover:before:scale-100">
         <Link to={"/blog"}>Blog</Link>
       </li>
-      <li className="relative font-medium text-white before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition hover:before:scale-100">
+      {
+        user ?
+        <li className="relative font-medium text-white before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition hover:before:scale-100">
         <label
           htmlFor="my-modal-4"
         >
           Profile
         </label>
       </li>
+      :
       <li>
-        <div className="sm:flex sm:gap-4 invisible md:visible">
-          <div className="dropdown dropdown-end">
-          {user ? (
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img src={user.photoURL} />
-                </div>
-              </label>
-            ) : (
-              <Link to={"/login"} className="btn px-5">
-                Log in
-              </Link>
-            )}
-          </div>
-        </div>
+        <Link to={'/login'} className="btn text-white">
+          Log In
+        </Link>
       </li>
+      }
+      
     </>
   );
   return (

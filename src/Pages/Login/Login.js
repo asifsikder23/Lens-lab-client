@@ -78,15 +78,15 @@ const handleResetPass = () => {
             />
 
             <div className="hidden lg:relative lg:block lg:p-12">
-              <div className="flex justify-end">
+              <div className="flex justify-start">
               <img className="h-8 sm:h-10" src={logo} alt="" />
               </div>
 
-              <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl text-right">
+              <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl text-left">
                 Welcome to Lens Lab
               </h2>
 
-              <p className="mt-4 leading-relaxed text-white/90 text-right">
+              <p className="mt-4 leading-relaxed text-white/90 text-left">
                 Selling your photo gear to KEH Camera is easy! Get an instant
                 quote on our website, ship it in for free and get top-dollar for
                 your camera equipment.

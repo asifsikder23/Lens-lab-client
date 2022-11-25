@@ -25,15 +25,15 @@ const About = () => {
             </div>
           </div>
         </div>
-        <section class="overflow-hidden bg-stone-900  sm:grid sm:grid-cols-2">
-          <div class="p-8 md:p-12 lg:px-16 lg:py-24">
-            <div class="mx-auto max-w-xl text-center sm:text-left">
-              <h2 class="text-2xl font-bold text-white md:text-3xl">
+        <section className="overflow-hidden bg-stone-900  sm:grid sm:grid-cols-2">
+          <div className="p-8 md:p-12 lg:px-16 lg:py-24">
+            <div className="mx-auto max-w-xl text-center sm:text-left">
+              <h2 className="text-2xl font-bold text-white md:text-3xl">
                 If you are looking for the best place to sell your used cameras
                 and other photography equipment, then this guide is for you.
               </h2>
 
-              <p class="hidden text-white md:mt-4 md:block">
+              <p className="hidden text-white md:mt-4 md:block">
                 We created Lens Lab because we saw the need for a better way to
                 buy and sell photography and videography equipment. Passionate
                 about the craft ourselves, we dreamed of a more focused platform
@@ -44,7 +44,7 @@ const About = () => {
           <img
             alt=""
             src="https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2020/12/7abbd62ccc6b82f8eec569e216de01b1.jpg"
-            class="h-56 w-full object-cover sm:h-full lg:rounded-l-full"
+            className="h-56 w-full object-cover sm:h-full lg:rounded-l-full"
           />
         </section>
         <section>
