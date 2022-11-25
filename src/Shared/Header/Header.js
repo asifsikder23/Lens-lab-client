@@ -18,6 +18,9 @@ const Navbar = () => {
         <Link to={"/contact"}>Contact Us</Link>
       </li>
       <li className="relative font-medium text-white before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition hover:before:scale-100">
+        <Link to={"/dashboard"}>Dashboard</Link>
+      </li>
+      <li className="relative font-medium text-white before:absolute before:-bottom-1 before:h-0.5 before:w-full before:origin-left before:scale-x-0 before:bg-white before:transition hover:before:scale-100">
         <Link to={"/blog"}>Blog</Link>
       </li>
       {
@@ -41,9 +44,37 @@ const Navbar = () => {
   );
   return (
     <div>
+      
       <header aria-label="Site Header" className="bg-stone-900">
+        
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
+          <div className="dropdown dropdown-left">
+              <label
+                htmlFor="dashboard-drawer"
+                tabIndex={0}
+                className="btn text-black bg-white mr-3 md:hidden"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
+                </svg>
+              </label>
+              <ul
+                tabIndex={0}
+                className="menu menu-compact dropdown-content mt-16 p-2 shadow bg-base-100 rounded-box w-52"
+              ></ul>
+            </div>
             <div className="flex-1 md:flex md:items-center md:gap-12">
               <Link className="block text-teal-600 text-xl" to={"/"}>
                 <div className="flex items-center gap-3">
