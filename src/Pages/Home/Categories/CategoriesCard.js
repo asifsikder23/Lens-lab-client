@@ -5,7 +5,6 @@ const CategoriesCard = ({ category }) => {
   const { categoriesName, images, categoriesId } = category;
   return (
     <div className=''>
-      <a href="#" className="group block overflow-hidden">
         <img
           alt="Tee"
           src={images}
@@ -16,7 +15,6 @@ const CategoriesCard = ({ category }) => {
             {categoriesName}
           </h3>
         </div>
-      </a>
       <Link to={`/categories/${categoriesId}`}>
       <button
       className="btn w-full"

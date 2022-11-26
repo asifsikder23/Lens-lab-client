@@ -5,16 +5,8 @@ const AllUserData = ({user}) => {
     const { name, email, role, photo } = user;
     return (
         <div>
-            <table className="table w-full">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>User</th>
-              <th>Role</th>
-              <th>Make Admin</th>
-              <th>Delete</th>
-            </tr>
-          </thead>
+            
+          
           <tbody>
             <tr>
               <th>
@@ -38,6 +30,11 @@ const AllUserData = ({user}) => {
               </td>
               <td>{role}</td>
               <td>
+                <button className="btn btn-ghost btn-xs bg-blue-200">
+                  Verify
+                </button>
+              </td>
+              <td>
                 <button className="btn btn-ghost btn-xs bg-green-200">
                   Make Admin
                 </button>
@@ -49,7 +46,7 @@ const AllUserData = ({user}) => {
               </th>
             </tr>
           </tbody>
-        </table>
+        
         </div>
     );
 };

@@ -161,7 +161,7 @@ const Signup = () => {
                   </div>
                   <form
                     onSubmit={handleSignUp}
-                    action=""
+                    
                     className="space-y-8 ng-untouched ng-pristine ng-valid"
                   >
                     <div className="space-y-4">

@@ -1,105 +1,211 @@
 import React from "react";
+import { useForm } from "react-hook-form";
+
 
 const AddProduct = () => {
-  return (
-    <div>
-      <input type="checkbox" id="my-modal-3" className="modal-toggle" />
-      <div className="modal">
-        <div className="modal-box relative">
-          <label
-            htmlFor="my-modal-3"
-            className="btn btn-sm btn-circle absolute right-2 top-2"
-          >
-            ✕
-          </label>
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm();
+  const imgHostKey = process.env.REACT_APP_imgbbKey;
 
-          <form
-            action=""
-            className="space-y-8 ng-untouched ng-pristine ng-valid"
-          >
-            <div className="space-y-4">
-              <div className="space-y-2">
-                <label className="block text-sm">Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="John Deo"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-stone-900 dark:text-gray-100 focus:dark:border-violet-400"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="block text-sm">Email</label>
-                <input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="John Deo"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-stone-900 dark:text-gray-100 focus:dark:border-violet-400"
-                />
-              </div>
-              <div className="space-y-2 ">
-                <label className="block text-sm">Category</label>
-                <select
-                  name="userType"
-                  className="select select-bordered w-full max-w-xs px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-stone-900 dark:text-gray-100 focus:dark:border-violet-200 bg-zinc-900"
-                >
-                  <option>Buyer</option>
-                  <option>Seller</option>
-                  <option>Seller</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label className="block text-sm">Photo URL</label>
-                <input
-                  type="check"
-                  name="photo"
-                  id="photo"
-                  placeholder="https://scontent.fdac145-1.fna.fbcdn.net"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-stone-900 dark:text-gray-100 focus:dark:border-violet-400"
-                />
-              </div>
-              <div className="space-y-2">
-                <label className="block text-sm">location</label>
-                <input
-                  type="text"
-                  name="location"
-                  id="location"
-                  placeholder="leroy@jenkins.com"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-stone-900 dark:text-gray-100 focus:dark:border-violet-400"
-                />
-              </div>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <label className="text-sm">Original Price</label>
-                </div>
-                <input
-                  type="text"
-                  name="orPrice"
-                  id="orPrice"
-                  placeholder="12000 tk"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-stone-900 dark:text-gray-100 focus:dark:border-violet-400"
-                />
-              </div>
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <label className="text-sm">Selling Price</label>
-                </div>
-                <input
-                  type="text"
-                  name="sellPrice"
-                  id="sellPrice"
-                  placeholder="12000 tk"
-                  className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-stone-900 dark:text-gray-100 focus:dark:border-violet-400"
-                />
-              </div>
-            </div>
-            <button type="submit" className="w-full btn">
-              Add Product
-            </button>
-          </form>
+
+  const handleAddproduct = (data) => {
+    const image = data.image[0];
+    const formData = new FormData();
+    formData.append("image", image);
+    fetch(`https://api.imgbb.com/1/upload?key=${'b9b258b2d7931dedd2b31dda9078c475'}`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => res.json())
+      .then((imgData) => {
+        if (imgData.success) {
+          const addproduct = {
+            categoriesName: data.name,
+            originalPrice: data.originalprice,
+            sellingPrice: data.resaleprice,
+            location: data.location,
+            
+            usesTime: data.purchase,
+            
+            categoriesId: data.category,
+            shortDescription: data.message,
+            
+            images1: imgData.data.url,
+            time: new Date()
+          };
+          console.log(addproduct);
+          fetch("http://localhost:5000/categories", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(addproduct),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              console.log(data);
+              alert("Product added successfully");
+              
+            });
+        }
+      });
+  };
+  return (
+    <div class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-100 mt-12 mb-12">
+      <form onSubmit={handleSubmit(handleAddproduct)}>
+        <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 items-center">
+          <div>
+            <label htmlFor="name" className="block dark:text-gray-400">
+              Product Name*
+            </label>
+            <input
+              {...register("name", {
+                required: "Name Is Required",
+                minLength: {
+                  value: 4,
+                  message: "Name Must Be 4 Characters Or Long",
+                },
+              })}
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Product Name"
+              className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
+            />
+          </div>
+          {errors.name && (
+            <p className="text-red-600">{errors.name?.message}</p>
+          )}
+          <div>
+            <label htmlFor="img" className="block dark:text-gray-400">
+              Product Image
+            </label>
+            <input
+              {...register("image", {
+                required: true,
+              })}
+              type="file"
+              name="image"
+              id="image"
+              accept="image/*"
+              placeholder="Enter Your img"
+              className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
+            />
+          </div>
+          <div>
+            <label htmlFor="originalprice" className="block dark:text-gray-400">
+              originalprice
+            </label>
+            <input
+              {...register("originalprice", {
+                required: "originalprice is Required",
+              })}
+              type="text"
+              name="originalprice"
+              id="originalprice"
+              placeholder="originalprice"
+              className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
+            />
+          </div>
+          {errors.email && (
+            <p className="text-red-600">{errors.originalprice?.message}</p>
+          )}
+          <div>
+            <label htmlFor="resaleprice" className="block dark:text-gray-400">
+              resaleprice
+            </label>
+            <input
+              {...register("resaleprice", {
+                required: "resaleprice is Required",
+              })}
+              type="text"
+              name="resaleprice"
+              id="resaleprice"
+              placeholder="resaleprice"
+              className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
+            />
+          </div>
+          {errors.email && (
+            <p className="text-red-600">{errors.resaleprice?.message}</p>
+          )}
+          <div>
+            <label htmlFor="location" className="block dark:text-gray-400">
+              location
+            </label>
+            <input
+              {...register("location", { required: "location is Required" })}
+              type="text"
+              name="location"
+              id="location"
+              placeholder="location"
+              className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
+            />
+          </div>
+          
+          <div>
+            <label htmlFor="purchase" className="block dark:text-gray-400">
+              purchase
+            </label>
+            <input
+              {...register("purchase", { required: "purchase is Required" })}
+              type="text"
+              name="purchase"
+              id="purchase"
+              placeholder="purchase"
+              className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
+            />
+          </div>
+          <div>
+            <label
+              htmlFor="condition"
+              className="block dark:text-gray-400 mt-6"
+            >
+              Condition*
+            </label>
+            <select
+              {...register("condition", { required: true })}
+              className="select select-bordered w-full"
+            >
+              <option>excellent</option>
+              <option>Good</option>
+              <option>Fair</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="category" className="block dark:text-gray-400 mt-6">
+              category*
+            </label>
+            <select
+              {...register("category", { required: true })}
+              className="select select-bordered w-full"
+            >
+              <option value="101">Digital Camera</option>
+              <option value="102">Camera Lenses & Filters</option>
+              <option value="103">Video Cameras & Camcorders</option>
+            </select>
+          </div>
+          <div>
+            <label htmlFor="message" className="block dark:text-gray-400">
+              Message*
+            </label>
+            <textarea
+              {...register("message", { required: "message is Required" })}
+              name="message"
+              placeholder="exmple@gmail.com"
+              className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
+            />
+          </div>
+          <input
+            className="btn btn-secondary w-full rounded-none py-2 px-8 mt-6 text-gray-100"
+            value="Add a Product"
+            type="submit"
+          />
         </div>
-      </div>
+      </form>
     </div>
   );
 };
