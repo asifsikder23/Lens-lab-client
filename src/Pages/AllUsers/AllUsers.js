@@ -1,10 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
-import React, {  useState } from "react";
+import React from "react";
 
 
 const AllUsers = () => {
-  
-  // const [loading, setLoading] = useState(true);
 
 
   const { data: info = [], } = useQuery({
@@ -19,6 +17,7 @@ const AllUsers = () => {
 
   return (
     <div>
+      <h1 className="text-2xl font-bold text-center my-5">All Users</h1>
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           <thead>

@@ -1,16 +1,14 @@
-
-import React, { useContext } from 'react';
-import { AuthContext } from '../../Context/UserContext';
-
+import React, { useContext } from "react";
+import { AuthContext } from "../../Context/UserContext";
 
 const Dashboard = () => {
-    const {user} = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
 
-    return (
-        <div>
-            <h1 className='text-3xl my-5'>My Orders</h1>
+  return (
+    <div>
+      <h1 className="text-2xl font-bold text-center my-5">My Orders</h1>
 
-            <div className="overflow-x-auto">
+      <div className="overflow-x-auto">
         <table className="table w-full">
           <thead>
             <tr>
@@ -34,12 +32,11 @@ const Dashboard = () => {
                 <td>{booking.slot}</td>
               </tr>)
             } */}
-
           </tbody>
         </table>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default Dashboard;

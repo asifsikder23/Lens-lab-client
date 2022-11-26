@@ -18,13 +18,14 @@ const Signup = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-
+        
         navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error("error: ", error);
       });
   };
+  
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;

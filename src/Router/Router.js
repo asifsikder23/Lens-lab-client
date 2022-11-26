@@ -11,6 +11,7 @@ import Error from "../Pages/Error/Error";
 import Product from "../Pages/Home/Categories/Product";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
+import MyProducts from "../Pages/MyProducts/MyProducts";
 import Signup from "../Pages/Signup/Signup";
 import PrivateRoute from "./PrivateRoute";
 
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
                 {
                     path: '/dashboard/addproducts',
                     element: <AddProduct></AddProduct>
+                },
+                {
+                    path: '/dashboard/myproducts',
+                    element: <MyProducts></MyProducts>
                 }
             
         ]
