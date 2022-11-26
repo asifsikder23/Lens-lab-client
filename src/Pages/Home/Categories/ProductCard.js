@@ -1,9 +1,10 @@
 import React from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
+import blueTick from '../../../Assets/bluetick.png'
 
 const ProductCard = ({ product }) => {
-  const { productName, images1, sellingPrice,originalPrice, shortDescription, location } =
+  const { productName, images1, sellingPrice,originalPrice, shortDescription, location, usesTime} =
     product;
   return (
     <div className="">
@@ -19,15 +20,18 @@ const ProductCard = ({ product }) => {
               <dt class="sr-only">Price</dt>
 
               <div className="card-actions justify-center">
-                <div className="badge badge-outline">Orig. Price: {originalPrice}</div>
-                <div className="badge badge-outline">Sell. Price: {sellingPrice}</div>
+                <div className="badge badge-outline bg-red-200">Orig. Price: {originalPrice}</div>
+                <div className="badge badge-outline bg-green-200">Sell. Price: {sellingPrice}</div>
+              </div>
+              <div className="card-actions justify-center my-3">
+              <div className="badge badge-outline bg-purple-200">Uses Time: {usesTime}</div>
               </div>
             </div>
 
             <div>
               <dt class="sr-only">Product</dt>
 
-              <dd class="font-medium">{productName}</dd>
+              <dd class="font-medium mb-3">{productName}</dd>
             </div>
             <div>
               <dt class="sr-only">Address</dt>
@@ -36,7 +40,7 @@ const ProductCard = ({ product }) => {
             </div>
           </dl>
 
-          <div class="mt-6 flex items-center gap-8 text-xs">
+          <div class="my-6 flex items-center gap-8 text-xs">
             <div class="sm:inline-flex sm:shrink-0 sm:items-center">
               <svg
                 class="h-4 w-4 text-indigo-700"
@@ -77,9 +81,16 @@ const ProductCard = ({ product }) => {
               </svg>
 
               <div class="mt-1.5 sm:ml-3 sm:mt-0">
-                <p class="text-gray-500">Bathroom</p>
+                <p class="text-gray-500">Seller</p>
 
-                <p class="font-medium">2 rooms</p>
+                <div className="flex justify-between">
+                <div>
+                <p class="font-medium">Name</p>
+                </div>
+                <div>
+                <img className="h-5 w-5" src={blueTick} alt="" />
+                </div>
+                </div>
               </div>
             </div>
           </div>

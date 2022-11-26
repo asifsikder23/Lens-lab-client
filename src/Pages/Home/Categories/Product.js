@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
+import {  ThreeDots } from "react-loader-spinner";
 
 const Product = () => {
     const params = useParams();
@@ -26,7 +27,22 @@ const Product = () => {
   
   return (
     <div>
+      {loading && (
+          <h2 className="flex justify-center my-10">
+            <ThreeDots
+              height="80"
+              width="80"
+              radius="9"
+              color="#4fa94d"
+              ariaLabel="three-dots-loading"
+              wrapperStyle={{}}
+              wrapperClassName=""
+              visible={true}
+            />
+          </h2>
+        )}
       <div className="m-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+      
         {
             info.map(product =>(
                 <ProductCard

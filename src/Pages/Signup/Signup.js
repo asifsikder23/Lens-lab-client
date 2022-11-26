@@ -31,10 +31,11 @@ const Signup = () => {
     const email = form.email.value;
     const name = form.name.value;
     const photo = form.photo.value;
-    const type = form.userType.value;
+    const role = form.userType.value;
     const password = form.password.value;
+    console.log(role);
 
-    createUser(email, password, type)
+    createUser(email, password,)
       .then((result) => {
         const user = result.user;
         Swal.fire({
@@ -44,24 +45,38 @@ const Signup = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        updateUser(name, photo);
+        updateUser(name, photo, role, email);
         console.log(user);
       })
       .catch((err) => console.error(err));
   };
-  const updateUser = (name, photo) => {
+  const updateUser = (name, photo, role, email) => {
     updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
     })
       .then(() => {
+        saveUser(name, email, role, photo)
         console.log("display name updated");
-        navigate(from,{replace:true})
       })
       .catch((error) => {
         console.error("error", error);
       });
   };
+  const saveUser = (name , email , role, photo) =>{
+    const user = {name , email , role, photo};
+    fetch('http://localhost:5000/users', {
+        method: 'POST' ,
+        headers: {
+            'content-type' : 'application/json'
+        },
+        body: JSON.stringify(user)
+    }).then(res => res.json())
+    .then(data =>{
+        console.log('test',data);
+        navigate('/');
+    })
+}
   return (
     <div>
       <section className="dark:bg-zinc-900">

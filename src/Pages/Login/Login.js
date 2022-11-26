@@ -16,7 +16,6 @@ const Login = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-
         navigate(from, { replace: true });
       })
       .catch((error) => {

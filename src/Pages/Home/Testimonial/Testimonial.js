@@ -4,10 +4,8 @@ import "swiper/css";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
-
 
 import { Autoplay, EffectCoverflow, Pagination } from "swiper";
 import "./Testimonial.css";
@@ -27,7 +25,7 @@ const Testimonial = () => {
           centeredSlides={true}
           slidesPerView={"auto"}
           autoplay={{
-            delay: 3000,
+            delay: 4000,
             disableOnInteraction: false,
           }}
           coverflowEffect={{

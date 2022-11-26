@@ -11,6 +11,13 @@ const firebaseConfig = {
   storageBucket: "lab-lens.appspot.com",
   messagingSenderId: "248004557187",
   appId: "1:248004557187:web:74c2ff3ee2a5e30244deb6"
+
+  // apiKey: process.env.REACT_APP_apiKey,
+  // authDomain: process.env.REACT_APP_authDomain,
+  // projectId: process.env.REACT_APP_projectId,
+  // storageBucket: process.env.REACT_APP_storageBucket,
+  // messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  // appId: process.env.REACT_APP_appId
 };
 
 console.log(firebaseConfig);
