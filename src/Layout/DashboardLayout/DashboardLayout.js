@@ -1,10 +1,14 @@
 import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
+import useAdmin from "../../Hook/useAdmin/useAdmin";
+import useSeller from "../../Hook/useSeller/useSeller";
 import Header from "../../Shared/Header/Header";
 
 const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
+  const [isAdmin] = useAdmin(user?.email);
+  const [isSeller] = useSeller(user?.email);
   return (
     <div>
       <Header></Header>
@@ -60,7 +64,9 @@ const DashboardLayout = () => {
                 </Link>
               </li>
               <li className="rounded-sm hover:dark:bg-gray-800 hover:text-white transition">
-                <Link
+                {
+                  isAdmin &&
+                  <Link
                   to={"/dashboard/allusers"}
                   className="flex items-center p-2 space-x-3 rounded-md"
                 >
@@ -73,8 +79,11 @@ const DashboardLayout = () => {
                   </svg>
                   <span>All Users</span>
                 </Link>
+                }
               </li>
-              <li className="rounded-sm hover:dark:bg-gray-800 hover:text-white transition">
+              {
+                isSeller &&
+                <li className="rounded-sm hover:dark:bg-gray-800 hover:text-white transition">
                 <Link
                 to={'/dashboard/addproducts'}
                   className="flex items-center p-2 space-x-3 rounded-md"
@@ -90,7 +99,10 @@ const DashboardLayout = () => {
                   <span>Add Product</span>
                 </Link>
               </li>
-              <li className="rounded-sm hover:dark:bg-gray-800 hover:text-white transition">
+              }
+              {
+                isSeller &&
+                <li className="rounded-sm hover:dark:bg-gray-800 hover:text-white transition">
                 <Link
                 to={'/dashboard/myproducts'}
                   className="flex items-center p-2 space-x-3 rounded-md"
@@ -105,6 +117,7 @@ const DashboardLayout = () => {
                   <span>My Products</span>
                 </Link>
               </li>
+              }
               <li className="rounded-sm hover:dark:bg-gray-800 hover:text-white transition">
                 <a
                   rel="noopener noreferrer"

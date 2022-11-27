@@ -3,7 +3,7 @@ import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import blueTick from '../../../Assets/bluetick.png'
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ product, setBooking }) => {
   const { productName, images1, sellingPrice,originalPrice, shortDescription, location, usesTime, sellerName} =
     product;
   return (
@@ -94,7 +94,10 @@ const ProductCard = ({ product }) => {
               </div>
             </div>
           </div>
-          <button className="btn w-full">Buy Now</button>
+          <label
+          onClick={() => setBooking(product)}
+          htmlFor="booking-modal"
+           className="btn w-full">Buy Now</label>
         </div>
     </div>
   );

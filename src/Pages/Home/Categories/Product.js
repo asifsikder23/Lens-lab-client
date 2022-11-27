@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData, useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import {  ThreeDots } from "react-loader-spinner";
+import BookingModal from "./BookingModal";
 
 const Product = () => {
     const params = useParams();
@@ -24,7 +25,7 @@ const Product = () => {
           });
       }, [id]);
     console.log(info);
-  
+    const [booking, setBooking] = useState(null);
   return (
     <div>
       {loading && (
@@ -48,10 +49,20 @@ const Product = () => {
                 <ProductCard
                 key={product.id}
                 product={product}
+                setBooking={setBooking}
                 ></ProductCard>
             ))
         }
+        {
+          info.map(product =>(
+            <BookingModal
+            key={product._id}
+            booking={booking}
+            product={product}></BookingModal>
+        ))
+        }
       </div>
+
     </div>
   );
 };

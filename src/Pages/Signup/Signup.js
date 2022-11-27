@@ -5,12 +5,21 @@ import logo from "../../Assets/logo with text white.png";
 import logo2 from "../../Assets/logo with text.png";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/UserContext";
+import useToken from "../../Hook/useToken";
 
 
 const Signup = () => {
   const { googleSignIn, auth, createUser } = useContext(AuthContext);
+   const [createdUserEmail, setCreatedUserEmail] = useState('')
+  const [token] = useToken(createdUserEmail);
   const navigate = useNavigate();
   const location = useLocation();
+
+  if(token){
+    navigate('/')
+  }
+
+
   const from = location.state?.from?.pathname || "/";
 
 
@@ -18,7 +27,7 @@ const Signup = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
-        
+        console.log(user);
         navigate(from, { replace: true });
       })
       .catch((error) => {
@@ -74,8 +83,9 @@ const Signup = () => {
         body: JSON.stringify(user)
     }).then(res => res.json())
     .then(data =>{
+      setCreatedUserEmail(email);
         console.log('test',data);
-        navigate('/');
+        
     })
 }
   return (

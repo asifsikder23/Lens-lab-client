@@ -1,32 +1,30 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
-
 const AllUsers = () => {
-
-
   const { data: info = [], refetch } = useQuery({
     queryKey: ["info"],
     queryFn: async () => {
-        const res = await fetch("http://localhost:5000/users");
-        const data = await res.json();
-        return data;
-    }
-})
-const handleMakeAdmin = id =>{
-  fetch(`http://localhost:5000/users/admin/${id}`,{
-    method: 'PUT'
-  })
-  .then(res => res.json())
-  .then(data => {
-    if(data.modifiedCount > 0){
-      alert('Sucessfully Make Admin')
-      refetch()
-    }
-  })
-}
-
-
+      const res = await fetch("http://localhost:5000/users");
+      const data = await res.json();
+      return data;
+    },
+  });
+  const handleMakeAdmin = (id) => {
+    fetch(`http://localhost:5000/users/admin/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          alert("Sucessfully Make Admin");
+          refetch();
+        }
+      });
+  };
   return (
     <div>
       <h1 className="text-2xl font-bold text-center my-5">All Users</h1>
@@ -71,13 +69,14 @@ const handleMakeAdmin = id =>{
                   </button>
                 </td>
                 <td>
-                  { user?.role !== 'Admin' &&
+                  {user?.role !== "admin" && (
                     <button
-                    onClick={()=> handleMakeAdmin (user._id)}
-                     className="btn btn-ghost btn-xs bg-green-200">
+                      onClick={() => handleMakeAdmin(user._id)}
+                      className="btn btn-ghost btn-xs bg-green-200"
+                    >
                       Make Admin
                     </button>
-                  }
+                  )}
                 </td>
                 <th>
                   <button className="btn btn-ghost btn-xs bg-red-400">
