@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import { AuthContext } from "../../Context/UserContext";
 import useAdmin from "../../Hook/useAdmin/useAdmin";
+import useBuyer from "../../Hook/UseBuyer/UseBuyer";
 import useSeller from "../../Hook/useSeller/useSeller";
 import Header from "../../Shared/Header/Header";
 
@@ -9,6 +10,7 @@ const DashboardLayout = () => {
   const { user } = useContext(AuthContext);
   const [isAdmin] = useAdmin(user?.email);
   const [isSeller] = useSeller(user?.email);
+  const [isBuyer] = useBuyer(user?.email);
   return (
     <div>
       <Header></Header>
@@ -48,7 +50,9 @@ const DashboardLayout = () => {
               </div>
             </div>
             <ul className="pt-2 pb-4 space-y-1 text-sm">
-              <li className="rounded-sm hover:dark:bg-gray-800 hover:text-white transition">
+              {
+                isBuyer &&
+                <li className="rounded-sm hover:dark:bg-gray-800 hover:text-white transition">
                 <Link
                   to={"/dashboard"}
                   className="flex items-center p-2 space-x-3 rounded-md"
@@ -63,6 +67,7 @@ const DashboardLayout = () => {
                   <span>My Orders</span>
                 </Link>
               </li>
+              }
               <li className="rounded-sm hover:dark:bg-gray-800 hover:text-white transition">
                 {
                   isAdmin &&
