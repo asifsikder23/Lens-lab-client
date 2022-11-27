@@ -4,7 +4,7 @@ import "react-photo-view/dist/react-photo-view.css";
 import blueTick from '../../../Assets/bluetick.png'
 
 const ProductCard = ({ product }) => {
-  const { productName, images1, sellingPrice,originalPrice, shortDescription, location, usesTime} =
+  const { productName, images1, sellingPrice,originalPrice, shortDescription, location, usesTime, sellerName} =
     product;
   return (
     <div className="">
@@ -40,7 +40,7 @@ const ProductCard = ({ product }) => {
             </div>
           </dl>
 
-          <div class="my-6 flex items-center gap-8 text-xs">
+          <div class="my-6 flex justify-between items-center gap-8 text-xs">
             <div class="sm:inline-flex sm:shrink-0 sm:items-center">
               <svg
                 class="h-4 w-4 text-indigo-700"
@@ -85,7 +85,7 @@ const ProductCard = ({ product }) => {
 
                 <div className="flex justify-between">
                 <div>
-                <p class="font-medium">Name</p>
+                <p class="font-medium">{sellerName}</p>
                 </div>
                 <div>
                 <img className="h-5 w-5" src={blueTick} alt="" />

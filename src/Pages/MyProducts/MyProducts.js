@@ -7,13 +7,6 @@ const MyProducts = () => {
       
       <article class="flex bg-white transition hover:shadow-xl">
         <div class="rotate-180 p-2 [writing-mode:_vertical-lr]">
-          {/* <time
-            class="flex items-center justify-between gap-4 text-xs font-bold uppercase text-gray-900"
-          >
-            <span>2022</span>
-            <span class="w-px flex-1 bg-gray-900/10"></span>
-            <span>Oct 10</span>
-          </time> */}
         </div>
 
         <div class="hidden sm:block sm:basis-56">

@@ -5,7 +5,7 @@ import React from "react";
 const AllUsers = () => {
 
 
-  const { data: info = [], } = useQuery({
+  const { data: info = [], refetch } = useQuery({
     queryKey: ["info"],
     queryFn: async () => {
         const res = await fetch("http://localhost:5000/users");
@@ -13,6 +13,18 @@ const AllUsers = () => {
         return data;
     }
 })
+const handleMakeAdmin = id =>{
+  fetch(`http://localhost:5000/users/admin/${id}`,{
+    method: 'PUT'
+  })
+  .then(res => res.json())
+  .then(data => {
+    if(data.modifiedCount > 0){
+      alert('Sucessfully Make Admin')
+      refetch()
+    }
+  })
+}
 
 
   return (
@@ -32,7 +44,7 @@ const AllUsers = () => {
           </thead>
           <tbody>
             {info.map((user, i) => (
-              <tr key={user.id}>
+              <tr key={user._id}>
                 <th>
                   <label>{i + 1}</label>
                 </th>
@@ -59,9 +71,13 @@ const AllUsers = () => {
                   </button>
                 </td>
                 <td>
-                  <button className="btn btn-ghost btn-xs bg-green-200">
-                    Make Admin
-                  </button>
+                  { user?.role !== 'Admin' &&
+                    <button
+                    onClick={()=> handleMakeAdmin (user._id)}
+                     className="btn btn-ghost btn-xs bg-green-200">
+                      Make Admin
+                    </button>
+                  }
                 </td>
                 <th>
                   <button className="btn btn-ghost btn-xs bg-red-400">

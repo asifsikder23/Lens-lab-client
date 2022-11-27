@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { AuthContext } from "../../Context/UserContext";
 
 const AddProduct = () => {
+  const {user} = useContext(AuthContext)
+  console.log(user);
   const {
     register,
     formState: { errors },
@@ -23,7 +26,7 @@ const AddProduct = () => {
       .then((imgData) => {
         if (imgData.success) {
           const addproduct = {
-            categoriesName: data.name,
+            productName: data.name,
             originalPrice: data.originalprice,
             sellingPrice: data.resaleprice,
             location: data.location,
@@ -32,7 +35,7 @@ const AddProduct = () => {
 
             categoriesId: data.category,
             shortDescription: data.message,
-
+            sellerName: user.displayName,
             images1: imgData.data.url,
             time: new Date(),
           };
@@ -54,14 +57,14 @@ const AddProduct = () => {
       });
   };
   return (
-    <div>
+    <div className="bg-stone-900 text-white">
       <h1 className="text-2xl font-bold text-center mt-5">Add Products</h1>
-      <div class="max-w-4xl p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-100 mb-12">
+      <div class="max-w-4xl p-6 mx-auto  rounded-md shadow-md  mb-12">
         <form onSubmit={handleSubmit(handleAddproduct)}>
           <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2 items-center">
             <div>
               <label htmlFor="name" className="block dark:text-gray-400">
-                Product Name*
+                Product Name
               </label>
               <input
                 {...register("name", {
@@ -75,7 +78,7 @@ const AddProduct = () => {
                 name="name"
                 id="name"
                 placeholder="Product Name"
-                className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
+                className="w-full px-4 py-3 rounded-md border-2 border-gray-300  dark:text-gray-800 focus:dark:border-violet-300 "
               />
             </div>
             {errors.name && (
@@ -102,7 +105,7 @@ const AddProduct = () => {
                 htmlFor="originalprice"
                 className="block dark:text-gray-400"
               >
-                originalprice
+                Original Price
               </label>
               <input
                 {...register("originalprice", {
@@ -111,7 +114,7 @@ const AddProduct = () => {
                 type="text"
                 name="originalprice"
                 id="originalprice"
-                placeholder="originalprice"
+                placeholder="Original Price"
                 className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
               />
             </div>
@@ -120,7 +123,7 @@ const AddProduct = () => {
             )}
             <div>
               <label htmlFor="resaleprice" className="block dark:text-gray-400">
-                resaleprice
+                Selling Price
               </label>
               <input
                 {...register("resaleprice", {
@@ -129,7 +132,7 @@ const AddProduct = () => {
                 type="text"
                 name="resaleprice"
                 id="resaleprice"
-                placeholder="resaleprice"
+                placeholder="Selling Price"
                 className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
               />
             </div>
@@ -138,28 +141,28 @@ const AddProduct = () => {
             )}
             <div>
               <label htmlFor="location" className="block dark:text-gray-400">
-                location
+                Location
               </label>
               <input
                 {...register("location", { required: "location is Required" })}
                 type="text"
                 name="location"
                 id="location"
-                placeholder="location"
+                placeholder="Location"
                 className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
               />
             </div>
 
             <div>
               <label htmlFor="purchase" className="block dark:text-gray-400">
-                purchase
+                Uses Time
               </label>
               <input
                 {...register("purchase", { required: "purchase is Required" })}
                 type="text"
                 name="purchase"
                 id="purchase"
-                placeholder="purchase"
+                placeholder="Uses Time"
                 className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
               />
             </div>
@@ -172,7 +175,7 @@ const AddProduct = () => {
               </label>
               <select
                 {...register("condition", { required: true })}
-                className="select select-bordered w-full"
+                className="select select-bordered w-full bg-stone-900 border-white"
               >
                 <option>excellent</option>
                 <option>Good</option>
@@ -184,11 +187,11 @@ const AddProduct = () => {
                 htmlFor="category"
                 className="block dark:text-gray-400 mt-6"
               >
-                category*
+                Category
               </label>
               <select
                 {...register("category", { required: true })}
-                className="select select-bordered w-full"
+                className="select select-bordered w-full bg-stone-900 border-white"
               >
                 <option value="101">Digital Camera</option>
                 <option value="102">Camera Lenses & Filters</option>
@@ -197,7 +200,7 @@ const AddProduct = () => {
             </div>
             <div>
               <label htmlFor="message" className="block dark:text-gray-400">
-                Message*
+                Description
               </label>
               <textarea
                 {...register("message", { required: "message is Required" })}
@@ -206,11 +209,12 @@ const AddProduct = () => {
                 className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
               />
             </div>
-            <input
-              className="btn btn-secondary w-full rounded-none py-2 px-8 mt-6 text-gray-100"
+            <button
+              className="btn w-full py-2 px-8 mt-6 text-gray-100"
               value="Add a Product"
               type="submit"
-            />
+            > Add Products
+              </button>
           </div>
         </form>
       </div>
