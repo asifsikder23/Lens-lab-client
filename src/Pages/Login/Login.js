@@ -4,24 +4,47 @@ import logo from "../../Assets/logo with text white.png";
 import logo2 from "../../Assets/logo with text.png";
 import { AuthContext } from "../../Context/UserContext";
 import Swal from "sweetalert2";
+import useToken from "../../Hook/useToken";
 
 const Login = () => {
+  const [createdUserEmail, setCreatedUserEmail] = useState('')
+  const [token] = useToken(createdUserEmail);
   const navigate = useNavigate()
   const location = useLocation()
   const from = location.state?.from?.pathname || "/";
   const {googleSignIn, login} = useContext(AuthContext)
   const [userEmail, setUserEmail] = useState("");
 
+  if(token){
+    navigate('/')
+  }
+
   const handleGoogleLogIn = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
+        saveSocialUser(user.displayName, user.email, user.role)
         navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error("error: ", error);
       });
   };
+  const saveSocialUser = (name , email) =>{
+    const user = {name , email , role:'Buyer'};
+    fetch('http://localhost:5000/users', {
+        method: 'POST' ,
+        headers: {
+            'content-type' : 'application/json'
+        },
+        body: JSON.stringify(user)
+    }).then(res => res.json())
+    .then(data =>{
+      setCreatedUserEmail(email);
+        console.log('test',data);
+        
+    })
+}
   const handleLogIn = event =>{
     event.preventDefault()
     const form = event.target;
@@ -43,7 +66,7 @@ const Login = () => {
       })
       .then(res => res.json())
       .then(data => {
-      
+        setUserEmail(email);
       })
       .catch(err => console.log(err))
     })
@@ -61,7 +84,7 @@ const Login = () => {
 }
 const handleResetPass = () => {
  if (!userEmail) {
-   Swal.fire("Please Enter Your Email");
+   Swal.fire("Please check your mail");
    return;
  }
 };
@@ -158,6 +181,7 @@ const handleResetPass = () => {
                       <div className="space-y-2">
                         <label className="block text-sm">Email address</label>
                         <input
+                       
                           type="email"
                           name="email"
                           id="email"

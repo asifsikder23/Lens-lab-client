@@ -27,6 +27,7 @@ const Signup = () => {
     googleSignIn()
       .then((result) => {
         const user = result.user;
+        saveSocialUser(user.displayName, user.email, user.role)
         console.log(user);
         navigate(from, { replace: true });
       })
@@ -34,6 +35,21 @@ const Signup = () => {
         console.error("error: ", error);
       });
   };
+  const saveSocialUser = (name , email) =>{
+    const user = {name , email , role:'Buyer'};
+    fetch('http://localhost:5000/users', {
+        method: 'POST' ,
+        headers: {
+            'content-type' : 'application/json'
+        },
+        body: JSON.stringify(user)
+    }).then(res => res.json())
+    .then(data =>{
+      setCreatedUserEmail(email);
+        console.log('test',data);
+        
+    })
+}
   
   const handleSignUp = (event) => {
     event.preventDefault();
