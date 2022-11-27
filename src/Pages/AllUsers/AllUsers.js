@@ -39,6 +39,22 @@ const AllUsers = () => {
       });
   };
 
+  const handleMakeStatus = (id) => {
+    fetch(`http://localhost:5000/users/status/${id}`, {
+      method: "PUT",
+      headers: {
+        authorization: `bearer ${localStorage.getItem("accessToken")}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount > 0) {
+          alert("Sucessfully verified");
+          refetch();
+        }
+      });
+  };
+
   return (
     <div>
       <h1 className="text-2xl font-bold text-center my-5">All Users</h1>
@@ -78,19 +94,37 @@ const AllUsers = () => {
                 </td>
                 <td>{user.role}</td>
                 <td>
-                  <button className="btn btn-ghost btn-xs bg-blue-200">
+                  {
+                    user?.status !== "verified" ?
+                    <button
+                  onClick={() => handleMakeStatus(user._id)} className="btn btn-ghost btn-xs bg-blue-200">
                     Verify
                   </button>
+                  :
+                  <button
+                  disabled
+                   className="btn btn-ghost btn-xs bg-blue-200">
+                    Verified
+                  </button>
+                  }
                 </td>
                 <td>
-                  {user?.role !== "admin" && (
+                  {user?.role !== "admin" ?
                     <button
                       onClick={() => handleMakeAdmin(user._id)}
                       className="btn btn-ghost btn-xs bg-green-200"
                     >
                       Make Admin
                     </button>
-                  )}
+                    :
+                    <button
+                      disabled
+                      className="btn btn-ghost btn-xs bg-green-200"
+                    >
+                      Make Admin
+                    </button>
+
+                  }
                 </td>
                 <th>
                   <button
