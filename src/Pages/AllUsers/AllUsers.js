@@ -25,6 +25,20 @@ const AllUsers = () => {
         }
       });
   };
+
+  const handleDelete = (id) => {
+    console.log(id);
+    fetch(`http://localhost:5000/users/${id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        alert("Successfully delete user");
+        refetch();
+      });
+  };
+
   return (
     <div>
       <h1 className="text-2xl font-bold text-center my-5">All Users</h1>
@@ -79,7 +93,8 @@ const AllUsers = () => {
                   )}
                 </td>
                 <th>
-                  <button className="btn btn-ghost btn-xs bg-red-400">
+                  <button
+                  onClick={()=> handleDelete(user._id)} className="btn btn-ghost btn-xs bg-red-400">
                     Delete
                   </button>
                 </th>

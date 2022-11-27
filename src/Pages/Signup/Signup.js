@@ -59,6 +59,8 @@ const Signup = () => {
     const photo = form.photo.value;
     const role = form.userType.value;
     const password = form.password.value;
+    const status = "not verified";
+    
     console.log(role);
 
     createUser(email, password,)
@@ -71,26 +73,26 @@ const Signup = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        updateUser(name, photo, role, email);
+        updateUser(name, photo, role, email, status);
         console.log(user);
       })
       .catch((err) => console.error(err));
   };
-  const updateUser = (name, photo, role, email) => {
+  const updateUser = (name, photo, role, email, status) => {
     updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: photo,
     })
       .then(() => {
-        saveUser(name, email, role, photo)
+        saveUser(name, email, role, photo, status)
         console.log("display name updated");
       })
       .catch((error) => {
         console.error("error", error);
       });
   };
-  const saveUser = (name , email , role, photo) =>{
-    const user = {name , email , role, photo};
+  const saveUser = (name , email , role, photo, status) =>{
+    const user = {name , email , role, photo, status};
     fetch('http://localhost:5000/users', {
         method: 'POST' ,
         headers: {

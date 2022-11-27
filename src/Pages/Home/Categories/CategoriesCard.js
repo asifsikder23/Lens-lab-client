@@ -4,24 +4,23 @@ import { Link } from "react-router-dom";
 const CategoriesCard = ({ category }) => {
   const { categoriesName, images, categoriesId } = category;
   return (
-    <div className=''>
+    <div className="">
+      <div href="#" class="block">
         <img
-          alt="Tee"
+          alt="Simple Watch"
           src={images}
-          className="h-80 w-full object-cover transition-transform duration-500 group-hover:scale-105"
         />
-        <div className="relative bg-white pt-4">
-          <h3 className="text-xl font-bold my-3 text-gray-700">
-            {categoriesName}
-          </h3>
+        <div class="my-5">
+          <h3 class="font-medium">{categoriesName}</h3>
         </div>
-      <Link to={`/categories/${categoriesId}`}>
+        <Link to={`/categories/${categoriesId}`}>
       <button
       className="btn w-full"
       >
         See Details
       </button>
       </Link>
+      </div>
     </div>
   );
 };
