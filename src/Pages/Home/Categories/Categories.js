@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import CategoriesCard from "./CategoriesCard";
 import { ThreeDots } from "react-loader-spinner";
+import CategoriesCard from "./CategoriesCard";
 
 const Categories = () => {
   const [info, setInfo] = useState([]);
@@ -8,7 +8,7 @@ const Categories = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/category")
+    fetch("https://lens-lab-server.vercel.app/category")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

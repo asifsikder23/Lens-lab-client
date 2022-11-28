@@ -1,5 +1,5 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 const CheckoutForm = ({booking}) => {
     const [cardError, setCardError] = useState('');
@@ -11,19 +11,6 @@ const CheckoutForm = ({booking}) => {
     const stripe = useStripe();
     const elements = useElements();
     const { price, email, name, _id } = booking;
-
-    // useEffect(() => {
-    //     fetch("http://localhost:5000/create-payment-intent", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-                
-    //         },
-    //         body: JSON.stringify({ price }),
-    //     })
-    //         .then((res) => res.json())
-    //         .then((data) => setClientSecret(data.clientSecret));
-    // }, [price]);
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -76,7 +63,7 @@ const CheckoutForm = ({booking}) => {
                 email,
                 bookingId: _id
             }
-            fetch('http://localhost:5000/payments', {
+            fetch('https://lens-lab-server.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',

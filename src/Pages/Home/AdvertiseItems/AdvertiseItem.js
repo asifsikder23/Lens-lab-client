@@ -1,180 +1,44 @@
-import React from "react";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/pagination";
-
-// import required modules
-import { Autoplay, FreeMode, Pagination } from "swiper";
+import React, { useEffect, useState } from "react";
+import AdvertiseItemsCard from "./AdvertiseItemsCard";
 
 const AdvertiseItem = () => {
+  const [info, setInfo] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(true);
+    fetch("https://lens-lab-server.vercel.app/advertise")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setInfo(data);
+        setLoading(false);
+      });
+  }, []);
+
   return (
-    <>
-      <Swiper
-        slidesPerView={'auto'}
-        autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
-        spaceBetween={20}
-        freeMode={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[FreeMode, Pagination, Autoplay]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
-            <img
-              src="https://source.unsplash.com/random/300x300/?1"
-              alt=""
-              className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
-            />
-            <div className="mt-6 mb-2">
-              <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-400">
-                Quisque
-              </span>
-              <h2 className="text-xl font-semibold tracking-wide">
-                Nam maximus purus
-              </h2>
-            </div>
-            <p className="dark:text-gray-100">
-              Mauris et lorem at elit tristique dignissim et ullamcorper elit.
-              In sed feugiat mi. Etiam ut lacinia dui.
+    <div>
+      <section className="py-6 sm:py-12 dark:bg-gray-800 dark:text-gray-100">
+        <div className="container p-6 mx-auto space-y-8">
+          <div className="space-y-2 text-center">
+            <h2 className="text-3xl font-bold">Partem reprimique an pro</h2>
+            <p className="font-serif text-sm dark:text-gray-400">
+              Qualisque erroribus usu at, duo te agam soluta mucius.
             </p>
           </div>
-        </SwiperSlide>
+          <div className="grid grid-cols-1 gap-x-4 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
+          {info.map(advertise => (
+        <AdvertiseItemsCard
+          key={advertise._id}
+          advertise={advertise}
+        ></AdvertiseItemsCard>
+      ))}
+          </div>
+        </div>
+      </section>
 
-        
-
-
-        {/* <SwiperSlide>
-          <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
-            <img
-              src="https://source.unsplash.com/random/300x300/?1"
-              alt=""
-              className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
-            />
-            <div className="mt-6 mb-2">
-              <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-400">
-                Quisque
-              </span>
-              <h2 className="text-xl font-semibold tracking-wide">
-                Nam maximus purus
-              </h2>
-            </div>
-            <p className="dark:text-gray-100">
-              Mauris et lorem at elit tristique dignissim et ullamcorper elit.
-              In sed feugiat mi. Etiam ut lacinia dui.
-            </p>
-          </div>
-        </SwiperSlide><SwiperSlide>
-          <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
-            <img
-              src="https://source.unsplash.com/random/300x300/?1"
-              alt=""
-              className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
-            />
-            <div className="mt-6 mb-2">
-              <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-400">
-                Quisque
-              </span>
-              <h2 className="text-xl font-semibold tracking-wide">
-                Nam maximus purus
-              </h2>
-            </div>
-            <p className="dark:text-gray-100">
-              Mauris et lorem at elit tristique dignissim et ullamcorper elit.
-              In sed feugiat mi. Etiam ut lacinia dui.
-            </p>
-          </div>
-        </SwiperSlide><SwiperSlide>
-          <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
-            <img
-              src="https://source.unsplash.com/random/300x300/?1"
-              alt=""
-              className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
-            />
-            <div className="mt-6 mb-2">
-              <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-400">
-                Quisque
-              </span>
-              <h2 className="text-xl font-semibold tracking-wide">
-                Nam maximus purus
-              </h2>
-            </div>
-            <p className="dark:text-gray-100">
-              Mauris et lorem at elit tristique dignissim et ullamcorper elit.
-              In sed feugiat mi. Etiam ut lacinia dui.
-            </p>
-          </div>
-        </SwiperSlide><SwiperSlide>
-          <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
-            <img
-              src="https://source.unsplash.com/random/300x300/?1"
-              alt=""
-              className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
-            />
-            <div className="mt-6 mb-2">
-              <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-400">
-                Quisque
-              </span>
-              <h2 className="text-xl font-semibold tracking-wide">
-                Nam maximus purus
-              </h2>
-            </div>
-            <p className="dark:text-gray-100">
-              Mauris et lorem at elit tristique dignissim et ullamcorper elit.
-              In sed feugiat mi. Etiam ut lacinia dui.
-            </p>
-          </div>
-        </SwiperSlide><SwiperSlide>
-          <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
-            <img
-              src="https://source.unsplash.com/random/300x300/?1"
-              alt=""
-              className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
-            />
-            <div className="mt-6 mb-2">
-              <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-400">
-                Quisque
-              </span>
-              <h2 className="text-xl font-semibold tracking-wide">
-                Nam maximus purus
-              </h2>
-            </div>
-            <p className="dark:text-gray-100">
-              Mauris et lorem at elit tristique dignissim et ullamcorper elit.
-              In sed feugiat mi. Etiam ut lacinia dui.
-            </p>
-          </div>
-        </SwiperSlide><SwiperSlide>
-          <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
-            <img
-              src="https://source.unsplash.com/random/300x300/?1"
-              alt=""
-              className="object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
-            />
-            <div className="mt-6 mb-2">
-              <span className="block text-xs font-medium tracking-widest uppercase dark:text-violet-400">
-                Quisque
-              </span>
-              <h2 className="text-xl font-semibold tracking-wide">
-                Nam maximus purus
-              </h2>
-            </div>
-            <p className="dark:text-gray-100">
-              Mauris et lorem at elit tristique dignissim et ullamcorper elit.
-              In sed feugiat mi. Etiam ut lacinia dui.
-            </p>
-          </div>
-        </SwiperSlide> */}
-      </Swiper>
-    </>
+      
+    </div>
   );
 };
 

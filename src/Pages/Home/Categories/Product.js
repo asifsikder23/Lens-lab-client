@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { ThreeDots } from "react-loader-spinner";
 import { useParams } from "react-router-dom";
-import ProductCard from "./ProductCard";
-import {  ThreeDots } from "react-loader-spinner";
 import BookingModal from "./BookingModal";
+import ProductCard from "./ProductCard";
 
 const Product = () => {
     const params = useParams();
@@ -15,7 +15,7 @@ const Product = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch(`http://localhost:5000/categories/${id}`)
+        fetch(`https://lens-lab-server.vercel.app/categories/${id}`)
           .then((res) => res.json())
           .then((data) => {
             console.log(data);

@@ -5,7 +5,7 @@ const ReportedItemCard = ({ reported }) => {
 
   const handleReport = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/report/${id}`, {
+    fetch(`https://lens-lab-server.vercel.app/report/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -34,12 +34,7 @@ const ReportedItemCard = ({ reported }) => {
               <p className="test-sm">{userEmail}</p>
             </div>
             <p class="mt-2 text-sm leading-relaxed text-gray-700 line-clamp-3">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-              Recusandae dolores, possimus pariatur animi temporibus nesciunt
-              praesentium dolore sed nulla ipsum eveniet corporis quidem,
-              mollitia itaque minus soluta, voluptates neque explicabo tempora
-              nisi culpa eius atque dignissimos. Molestias explicabo corporis
-              voluptatem?
+              
             </p>
           </div>
 

@@ -6,7 +6,7 @@ const ReportedItems = () => {
   
 
   useEffect(() => {
-    fetch("http://localhost:5000/report")
+    fetch("https://lens-lab-server.vercel.app/report")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
-import blueTick from '../../../Assets/bluetick.png'
+import blueTick from '../../../Assets/bluetick.png';
 import { AuthContext } from "../../../Context/UserContext";
 
 const ProductCard = ({ product, setBooking }) => {
@@ -20,7 +20,7 @@ const ProductCard = ({ product, setBooking }) => {
       const userReport = {productsName , productImg, userName, userEmail };
 
       
-      fetch('http://localhost:5000/report', {
+      fetch('https://lens-lab-server.vercel.app/report', {
           method: 'POST' ,
           headers: {
               'content-type' : 'application/json'
@@ -114,9 +114,12 @@ const ProductCard = ({ product, setBooking }) => {
                 <div>
                 <p class="font-medium">{sellerName}</p>
                 </div>
-                <div>
+                {
+                  user.status == "verified" &&
+                  <div>
                 <img className="h-5 w-5" src={blueTick} alt="" />
                 </div>
+                }
                 </div>
               </div>
             </div>

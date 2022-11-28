@@ -40,7 +40,7 @@ const AddProduct = () => {
             time: new Date(),
           };
           console.log(addproduct);
-          fetch("http://localhost:5000/categories", {
+          fetch("https://lens-lab-server.vercel.app/categories", {
             method: "POST",
             headers: {
               "content-type": "application/json",

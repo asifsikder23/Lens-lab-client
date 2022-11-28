@@ -6,7 +6,7 @@ const Dashboard = () => {
   const { user } = useContext(AuthContext);
   const [info, setInfo] = useState([]);
   useEffect(() => {
-    fetch(`http://localhost:5000/bookings?email=${user.email}`)
+    fetch(`https://lens-lab-server.vercel.app/bookings?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

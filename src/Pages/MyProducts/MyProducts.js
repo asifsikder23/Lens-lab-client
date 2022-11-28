@@ -11,7 +11,7 @@ const MyProducts = () => {
   
     useEffect(() => {
       setLoading(true);
-      fetch(`http://localhost:5000/categories?email=${user.email}`)
+      fetch(`https://lens-lab-server.vercel.app/categories?email=${user.email}`)
         .then((res) => res.json())
         .then((data) => {
           console.log(data);

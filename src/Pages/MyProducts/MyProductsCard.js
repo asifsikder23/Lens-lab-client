@@ -1,12 +1,12 @@
 import React from "react";
 
 const MyProductsCard = ({ myProduct }) => {
-  const { productName, images1, location, shortDescription, time, _id } =
+  const { productName, images1, location, shortDescription, time, _id, sellerName, sellingPrice } =
     myProduct;
 
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`http://localhost:5000/categories/${id}`, {
+    fetch(`https://lens-lab-server.vercel.app/categories/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -15,18 +15,35 @@ const MyProductsCard = ({ myProduct }) => {
         alert("Successfully delete user");
       });
   };
+const handleMakeAdvertise = () =>{
+  const addedProduct = {
+            _id: _id,
+            name: productName,
+            sellerName: sellerName,
+            location: location,
+            
+            sellingPrice: sellingPrice,
+            img: images1,
+        };
 
-  const handleMakeAdvertise = (id) => {
-    fetch(`http://localhost:5000/advertise/${id}`, {
-      method: "POST",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount > 0) {
-          alert("Successfully Make Advertise");
-        }
-      });
-  };
+        fetch('https://lens-lab-server.vercel.app/advertise', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(addedProduct)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.acknowledged) {
+                    alert('Advertised Confirmed.');
+                }
+                else {
+                    alert(data.message);
+                }
+            })
+}
   return (
     <div>
       <article class="flex bg-white transition hover:shadow-xl">

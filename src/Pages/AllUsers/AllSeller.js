@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import ReportedItemCard from "../../Layout/DashboardLayout/ReportedItemCard";
 import AllSellerData from "./AllSellerData";
 
 const AllSeller = () => {
   const { data: info = [], refetch } = useQuery({
     queryKey: ["info"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:5000/users");
+      const res = await fetch("https://lens-lab-server.vercel.app/users");
       const data = await res.json();
       return data;
     },

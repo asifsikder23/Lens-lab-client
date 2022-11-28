@@ -4,7 +4,7 @@ const AllSellerData = ({user}) => {
     const { name, email, role, photo, _id } = user;
 
     const handleMakeAdmin = (id) => {
-      fetch(`http://localhost:5000/users/admin/${id}`, {
+      fetch(`https://lens-lab-server.vercel.app/users/admin/${id}`, {
         method: "PUT",
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,
@@ -21,7 +21,7 @@ const AllSellerData = ({user}) => {
   
     const handleDelete = (id) => {
       console.log(id);
-      fetch(`http://localhost:5000/users/${id}`, {
+      fetch(`https://lens-lab-server.vercel.app/users/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -33,7 +33,7 @@ const AllSellerData = ({user}) => {
     };
   
     const handleMakeStatus = (id) => {
-      fetch(`http://localhost:5000/users/status/${id}`, {
+      fetch(`https://lens-lab-server.vercel.app/users/status/${id}`, {
         method: "PUT",
         headers: {
           authorization: `bearer ${localStorage.getItem("accessToken")}`,

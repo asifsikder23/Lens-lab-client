@@ -1,9 +1,9 @@
 import { updateProfile } from "firebase/auth";
 import React, { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import logo from "../../Assets/logo with text white.png";
 import logo2 from "../../Assets/logo with text.png";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/UserContext";
 import useToken from "../../Hook/useToken";
 
@@ -37,7 +37,7 @@ const Signup = () => {
   };
   const saveSocialUser = (name , email) =>{
     const user = {name , email , role:'Buyer'};
-    fetch('http://localhost:5000/users', {
+    fetch('https://lens-lab-server.vercel.app/users', {
         method: 'POST' ,
         headers: {
             'content-type' : 'application/json'
@@ -93,7 +93,7 @@ const Signup = () => {
   };
   const saveUser = (name , email , role, photo, status) =>{
     const user = {name , email , role, photo, status};
-    fetch('http://localhost:5000/users', {
+    fetch('https://lens-lab-server.vercel.app/users', {
         method: 'POST' ,
         headers: {
             'content-type' : 'application/json'
