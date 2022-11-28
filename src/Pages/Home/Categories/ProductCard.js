@@ -1,13 +1,38 @@
-import React from "react";
+import React, { useContext } from "react";
 import { PhotoProvider, PhotoView } from "react-photo-view";
 import "react-photo-view/dist/react-photo-view.css";
 import blueTick from '../../../Assets/bluetick.png'
+import { AuthContext } from "../../../Context/UserContext";
 
 const ProductCard = ({ product, setBooking }) => {
+  const {user} = useContext(AuthContext)
   const { productName, images1, sellingPrice,originalPrice, shortDescription, location, usesTime, sellerName} =
     product;
+
+    const handleReport = () =>{
+
+    const userEmail = user.email;
+    const userName = user.displayName;
+    const productImg = images1;
+    const productsName = productName;
+
+
+      const userReport = {productsName , productImg, userName, userEmail };
+      fetch('http://localhost:5000/report', {
+          method: 'POST' ,
+          headers: {
+              'content-type' : 'application/json'
+          },
+          body: JSON.stringify(userReport)
+      }).then(res => res.json())
+      .then(data =>{
+        alert('success')
+          console.log('test',data);
+          
+      })
+  } 
   return (
-    <div className="">
+    <div>
         <PhotoProvider>
           <PhotoView src={images1}>
             <img className="h-56 w-full object-cover" src={images1} alt="" />
@@ -94,10 +119,15 @@ const ProductCard = ({ product, setBooking }) => {
               </div>
             </div>
           </div>
+          <div className="flex justify-between">
           <label
           onClick={() => setBooking(product)}
           htmlFor="booking-modal"
-           className="btn w-full">Buy Now</label>
+           className="btn w-3/5">Buy Now</label>
+          <label
+          onClick={handleReport}
+           className="btn">Report</label>
+          </div>
         </div>
     </div>
   );

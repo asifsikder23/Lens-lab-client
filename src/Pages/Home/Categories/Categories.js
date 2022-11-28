@@ -8,7 +8,7 @@ const Categories = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("http://localhost:5000/categories")
+    fetch("http://localhost:5000/category")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -18,8 +18,7 @@ const Categories = () => {
   }, []);
   return (
     <div>
-      <div>
-      </div>
+      <div></div>
       {loading && (
         <h2 className="flex justify-center my-10">
           <ThreeDots
@@ -42,7 +41,8 @@ const Categories = () => {
                 <h2 class="text-4xl font-bold">All Categories here</h2>
 
                 <p class="mt-4 max-w-[45ch] text-sm text-gray-700">
-                Give second hand goods a new lease of life, help the environment and save cash.
+                  Give second hand goods a new lease of life, help the
+                  environment and save cash.
                 </p>
               </div>
             </div>

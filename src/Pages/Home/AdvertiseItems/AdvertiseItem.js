@@ -49,8 +49,10 @@ const AdvertiseItem = () => {
           </div>
         </SwiperSlide>
 
-        -------------------------------------------------------------------------------
-        <SwiperSlide>
+        
+
+
+        {/* <SwiperSlide>
           <div className="max-w-xs p-6 rounded-md shadow-md dark:bg-gray-900 dark:text-gray-50">
             <img
               src="https://source.unsplash.com/random/300x300/?1"
@@ -170,7 +172,7 @@ const AdvertiseItem = () => {
               In sed feugiat mi. Etiam ut lacinia dui.
             </p>
           </div>
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </>
   );

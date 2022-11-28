@@ -30,7 +30,7 @@ const AddProduct = () => {
             originalPrice: data.originalprice,
             sellingPrice: data.resaleprice,
             location: data.location,
-
+            email: user.email,
             usesTime: data.purchase,
 
             categoriesId: data.category,
@@ -205,13 +205,12 @@ const AddProduct = () => {
               <textarea
                 {...register("message", { required: "message is Required" })}
                 name="message"
-                placeholder="exmple@gmail.com"
+                placeholder="Description"
                 className="w-full px-4 py-3 rounded-md border-2 border-gray-300 dark:bg-gray-50 dark:text-gray-800 focus:dark:border-violet-300"
               />
             </div>
             <button
               className="btn w-full py-2 px-8 mt-6 text-gray-100"
-              value="Add a Product"
               type="submit"
             > Add Products
               </button>

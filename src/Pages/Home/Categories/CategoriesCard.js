@@ -1,4 +1,5 @@
 import React from "react";
+import { PhotoProvider, PhotoView } from "react-photo-view";
 import { Link } from "react-router-dom";
 
 const CategoriesCard = ({ category }) => {
@@ -6,10 +7,11 @@ const CategoriesCard = ({ category }) => {
   return (
     <div className="">
       <div href="#" class="block">
-        <img
-          alt="Simple Watch"
-          src={images}
-        />
+      <PhotoProvider>
+                  <PhotoView src={images}>
+                    <img  src={images} alt="" />
+                  </PhotoView>
+                </PhotoProvider>
         <div class="my-5">
           <h3 class="font-medium">{categoriesName}</h3>
         </div>
