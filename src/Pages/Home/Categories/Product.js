@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import {  ThreeDots } from "react-loader-spinner";
 import BookingModal from "./BookingModal";
@@ -11,7 +11,6 @@ const Product = () => {
     const [info, setInfo] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    
     console.log(id);
 
     useEffect(() => {

@@ -10,6 +10,7 @@ import BLog from "../Pages/Blog/BLog";
 import Contact from "../Pages/Contact/Contact";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import DashboradEmpty from "../Pages/Dashboard/DashboradEmpty";
+import Payment from "../Pages/Dashboard/Payment";
 import Error from "../Pages/Error/Error";
 import Product from "../Pages/Home/Categories/Product";
 import Home from "../Pages/Home/Home";
@@ -49,7 +50,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/categories/:id',
-                element: <Product></Product>
+                element: <PrivateRoute><Product></Product></PrivateRoute>
             },
             {
                 path: '/*',
@@ -69,6 +70,11 @@ const router = createBrowserRouter([
                 {
                     path: '/dashboard/myorder',
                     element: <Dashboard></Dashboard>
+                },
+                {
+                    path: '/dashboard/payment/:id',
+                    element: <PrivateRoute><Payment></Payment></PrivateRoute>,
+                    loader: ({params})=>fetch(`http://localhost:5000/bookings/${params.id}`)
                 },
                 {
                     path: '/dashboard/allsellers',

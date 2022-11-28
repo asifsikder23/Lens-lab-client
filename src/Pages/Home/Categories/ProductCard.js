@@ -18,6 +18,8 @@ const ProductCard = ({ product, setBooking }) => {
 
 
       const userReport = {productsName , productImg, userName, userEmail };
+
+      
       fetch('http://localhost:5000/report', {
           method: 'POST' ,
           headers: {

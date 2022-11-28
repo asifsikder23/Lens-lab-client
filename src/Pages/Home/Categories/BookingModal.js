@@ -1,9 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../../Context/UserContext';
 
-
-
-
 const BookingModal = ({ product, booking }) => {
 
     const { user } = useContext(AuthContext);
