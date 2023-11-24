@@ -7,7 +7,7 @@ const AdvertiseItem = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch("https://lens-lab-server.vercel.app/advertise")
+    fetch("https://lens-lab-server-three.vercel.app/advertise")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);

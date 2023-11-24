@@ -5,7 +5,7 @@ const useBuyer = email => {
     const [isBuyerLoading, setIsBuyerLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`https://lens-lab-server.vercel.app/users/buyer/${email}`)
+            fetch(`https://lens-lab-server-three.vercel.app/users/buyer/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);

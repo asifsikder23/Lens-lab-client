@@ -74,7 +74,7 @@ const router = createBrowserRouter([
                 {
                     path: '/dashboard/payment/:id',
                     element: <PrivateRoute><Payment></Payment></PrivateRoute>,
-                    loader: ({params})=>fetch(`https://lens-lab-server.vercel.app/bookings/${params.id}`)
+                    loader: ({params})=>fetch(`https://lens-lab-server-three.vercel.app/bookings/${params.id}`)
                 },
                 {
                     path: '/dashboard/allsellers',

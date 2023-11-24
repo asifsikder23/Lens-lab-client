@@ -11,19 +11,15 @@ const Product = () => {
     const [info, setInfo] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    console.log(id);
-
     useEffect(() => {
         setLoading(true);
-        fetch(`https://lens-lab-server.vercel.app/categories/${id}`)
+        fetch(`https://lens-lab-server-three.vercel.app/categories/${id}`)
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             setInfo(data);
             setLoading(false);
           });
       }, [id]);
-    console.log(info);
     const [booking, setBooking] = useState(null);
   return (
     <div>

@@ -5,7 +5,7 @@ const ReportedItemCard = ({ reported }) => {
 
   const handleReport = (id) => {
     console.log(id);
-    fetch(`https://lens-lab-server.vercel.app/report/${id}`, {
+    fetch(`https://lens-lab-server-three.vercel.app/report/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())

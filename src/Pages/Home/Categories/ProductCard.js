@@ -20,7 +20,7 @@ const ProductCard = ({ product, setBooking }) => {
       const userReport = {productsName , productImg, userName, userEmail };
 
       
-      fetch('https://lens-lab-server.vercel.app/report', {
+      fetch('https://lens-lab-server-three.vercel.app/report', {
           method: 'POST' ,
           headers: {
               'content-type' : 'application/json'
@@ -29,7 +29,6 @@ const ProductCard = ({ product, setBooking }) => {
       }).then(res => res.json())
       .then(data =>{
         alert('success')
-          console.log('test',data);
           
       })
   } 
@@ -63,7 +62,7 @@ const ProductCard = ({ product, setBooking }) => {
             <div>
               <dt class="sr-only">Address</dt>
 
-              <dd class="font-sm">{shortDescription}</dd>
+              <dd class="font-sm h-24">{shortDescription}</dd>
             </div>
           </dl>
 

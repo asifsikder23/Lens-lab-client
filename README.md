@@ -12,7 +12,7 @@ Code : [github](https://github.com/programming-hero-web-course-4/b612-used-produ
 
 Code Link: [github](https://github.com/programming-hero-web-course-4/b612-used-products-resale-server-side-asifsikder23)
 
-Vercel: [vercel](https://lens-lab-server.vercel.app/)
+Vercel: [vercel](https://lens-lab-server-three.vercel.app/)
 
 ## Features
 

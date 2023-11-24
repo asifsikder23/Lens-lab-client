@@ -24,7 +24,7 @@ const BookingModal = ({ product, booking }) => {
         }
         console.log(bookingFromModal);
 
-        fetch('https://lens-lab-server.vercel.app/bookings', {
+        fetch('https://lens-lab-server-three.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

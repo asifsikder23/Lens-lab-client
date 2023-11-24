@@ -5,7 +5,7 @@ const AllBuyerData = ({user, refetch}) => {
 
     const handleDelete = (id) => {
         console.log(id);
-        fetch(`https://lens-lab-server.vercel.app/users/${id}`, {
+        fetch(`https://lens-lab-server-three.vercel.app/users/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -6,7 +6,7 @@ const AllSeller = () => {
   const { data: info = [], refetch } = useQuery({
     queryKey: ["info"],
     queryFn: async () => {
-      const res = await fetch("https://lens-lab-server.vercel.app/users");
+      const res = await fetch("https://lens-lab-server-three.vercel.app/users");
       const data = await res.json();
       return data;
     },

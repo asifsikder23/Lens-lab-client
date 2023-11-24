@@ -40,7 +40,7 @@ const AddProduct = () => {
             time: new Date(),
           };
           console.log(addproduct);
-          fetch("https://lens-lab-server.vercel.app/categories", {
+          fetch("https://lens-lab-server-three.vercel.app/categories", {
             method: "POST",
             headers: {
               "content-type": "application/json",

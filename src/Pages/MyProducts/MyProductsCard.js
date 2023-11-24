@@ -6,7 +6,7 @@ const MyProductsCard = ({ myProduct }) => {
 
   const handleDelete = (id) => {
     console.log(id);
-    fetch(`https://lens-lab-server.vercel.app/categories/${id}`, {
+    fetch(`https://lens-lab-server-three.vercel.app/categories/${id}`, {
       method: "DELETE",
     })
       .then((res) => res.json())
@@ -26,7 +26,7 @@ const handleMakeAdvertise = () =>{
             img: images1,
         };
 
-        fetch('https://lens-lab-server.vercel.app/advertise', {
+        fetch('https://lens-lab-server-three.vercel.app/advertise', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

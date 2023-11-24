@@ -37,7 +37,7 @@ const Signup = () => {
   };
   const saveSocialUser = (name , email) =>{
     const user = {name , email , role:'Buyer'};
-    fetch('https://lens-lab-server.vercel.app/users', {
+    fetch('https://lens-lab-server-three.vercel.app/users', {
         method: 'POST' ,
         headers: {
             'content-type' : 'application/json'
@@ -93,7 +93,7 @@ const Signup = () => {
   };
   const saveUser = (name , email , role, photo, status) =>{
     const user = {name , email , role, photo, status};
-    fetch('https://lens-lab-server.vercel.app/users', {
+    fetch('https://lens-lab-server-three.vercel.app/users', {
         method: 'POST' ,
         headers: {
             'content-type' : 'application/json'

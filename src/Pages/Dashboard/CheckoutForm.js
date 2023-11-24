@@ -63,7 +63,7 @@ const CheckoutForm = ({booking}) => {
                 email,
                 bookingId: _id
             }
-            fetch('https://lens-lab-server.vercel.app/payments', {
+            fetch('https://lens-lab-server-three.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json',
